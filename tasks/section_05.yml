@@ -43,6 +43,7 @@
     service: name=auditd enabled=yes state=running
   - name: 5.2.3 Enable Auditing for Processes That Start Prior to auditd
     lineinfile: state=present dest=/etc/grub.conf backrefs=yes regexp="(^\s*kernel.*)$(?<!audit=1)" line="\1 audit=1"
+    when: not linode
   - name: 5.2.4 - 5.2.18 Configure auditd Rules
     copy: src=etc/audit/audit.rules dest=/etc/audit/audit.rules
     notify: Reload auditd Rules

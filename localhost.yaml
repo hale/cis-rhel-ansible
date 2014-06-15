@@ -1,7 +1,9 @@
 ---
 - hosts: localhost
+  vars_files:
+  - defaults/main.yml
   connection: local
+  handlers:
+    - include: handlers/main.yml
   tasks:
-    - include: cis/section_01.yml
-    - include: cis/section_02.yml
-    - include: cis/section_03.yml
+    - include: tasks/main.yml

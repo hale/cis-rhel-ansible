@@ -25,3 +25,6 @@ squid: no
 
 # Users
 lock_inactive: no
+
+# Linode compatibility
+linode: yes

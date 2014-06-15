@@ -11,6 +11,7 @@
     command: chkconfig avahi-daemon off removes=/etc/rc.d/rc3.d/S24avahi-daemon
   - name: 3.4 Disable Print Server - CUPS
     service: name=cups state=stopped enabled=no
+    when: not linode
   - name: 3.5 Remove DHCP Server
     yum: name=dhcp state=absent
   - name: 3.6 Configure Network Time Protocol (ipv4)
@@ -31,7 +32,7 @@
       - rpcbind
       - rpcidmapd
       - rpcsvcgssd
-    when: not nfs
+    when: not nfs and not linode
   - name: 3.9 Remove DNS Server
     yum: name=bind state=absent
     when: not dns
