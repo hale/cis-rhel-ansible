@@ -1,0 +1,7 @@
+---
+# Before applying the CIS rules
+
+  - name: Update installed packages
+    yum: name=* state=latest
+  - name: Install ansible dependencies
+    yum: name=libselinux-python state=latest

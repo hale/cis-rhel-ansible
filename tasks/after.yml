@@ -1,0 +1,11 @@
+---
+# After the CIS audit, add a new user
+
+  - name: Create phil
+    user: group=wheel name=phil password=$5$rounds=110000$IKyVDOcXJkjHnq7d$lCjDl8Qof4yUuvXIW.lsysLnrZzj7Ju/jF3aAh8SRY4
+  - name: Enable sudo for wheel users
+    lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='# %wheel ALL=(ALL) NOPASSWD: ALL'"
+  - name: Copy id_rsa.pub to allow passwordless login
+  local_action: command ssh-copy-id -i ~/.ssh/id_rsa.pub {{ inventory_hostname }}
+  - name: reboot the server
+    command: /sbin/reboot now

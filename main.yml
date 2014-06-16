@@ -1,8 +1,7 @@
 ---
-- hosts: localhost
+- hosts: targets
   vars_files:
     - defaults/main.yml
-  connection: local
   handlers:
     - include: handlers/main.yml
   tasks:

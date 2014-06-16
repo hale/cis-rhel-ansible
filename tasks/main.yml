@@ -1,5 +1,6 @@
 ---
 
+  - include: before.yml
   - include: section_01.yml
   - include: section_02.yml
   - include: section_03.yml
@@ -9,3 +10,4 @@
   - include: section_07.yml
   - include: section_08.yml
   - include: section_09.yml
+  - include: after.yml
